@@ -42,6 +42,7 @@ body{
 */
 
     background: var(--fundo) no-repeat top center/cover;
+    height: 100vh;
 
 /* AQUI EM CIMA É REALIZADA UMA FORMA DE "RESUMIR" OS CÓDIGOS, CHAMADA DE "SHORT HAND"(ATALHO).*/
 }
@@ -198,4 +199,16 @@ ul li a:hover {
 footer{
   padding: 24px;
   text-align: center;
+}
+/*media queries*/
+
+@media (min-width: 700px) {
+  :root{
+    --bg-url: url(./assets/bg-desktop.jpg)
+  }
+
+  .light{
+    --g-url: url(./assets/bg-desktop-light.jpg)
+  }
+
 }
