@@ -42,7 +42,7 @@ body{
 */
 
     background: var(--fundo) no-repeat top center/cover;
-    height: 100vh;
+    height: 100vh; /* AQUI SE CONFIGURA A ALTURA DO BACKGROUND*/
 
 /* AQUI EM CIMA É REALIZADA UMA FORMA DE "RESUMIR" OS CÓDIGOS, CHAMADA DE "SHORT HAND"(ATALHO).*/
 }
@@ -101,18 +101,21 @@ body *{
   top: 50%;     /*esse e o translatey se alinhanm*/
   left:0;
   z-index:1;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 
-  
+  animation: Fslider 0.3s; /*AQUI SE ADICIONA A ANIMAÇÃO DO MODO DARK PARA O MODO LIGHT, SEM A NECESSIDADE DO FORWARDS POIS A POSIÇÃO FINAL JÁ É A INICIAL*/
 
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
-
+  animation: Tslider 0.3s forwards; /*AQUI SE ADICIONA A ANIMAÇÃO COMEÇANDO NA CONFIG DO SWITCH NO MODO LIGHT. FORWARDS MANTEM AS CONFIG DEPOIS DO COMANDO, NO CASO, MANTENDO ELE NA POSIÇÃO FINAL DO TSLIDER */
 
 }
+
+#switch button:hover{
+  outline: 8px solid var(--texturainicial);
+}
+
 #switch span{
   display: block;
   width: 64px;
@@ -202,7 +205,7 @@ footer{
 }
 /*media queries*/
 
-@media (min-width: 700px) {
+@media (min-width: 700px) {   /* AQUI SE ADAPTA O BACKGROUND DE ACORDO COM O TAMANHO DA TELA DOS APARELHOS */
   :root{
     --bg-url: url(./assets/bg-desktop.jpg)
   }
@@ -211,4 +214,23 @@ footer{
     --g-url: url(./assets/bg-desktop-light.jpg)
   }
 
+}
+
+@keyframes Tslider {  /*AQUI SE ADICIONA O INÍCIO E FIM DA ANIMAÇÃO DE DESLIZAR DO SWITCH DE ILUMINAÇÃO DA ESQUERDA PARA A DIREITA*/
+  from{
+    left:0;
+  }
+  to{
+    left:50%;
+  }
+
+}
+
+@keyframes Fslider {  /*AQUI SE ADICIONA O INÍCIO E FIM DA ANIMAÇÃO DE DESLIZAR DO SWITCH DE ILUMINAÇÃO DIREITA PARA A ESQUERDA*/
+  from{
+    left:50%;
+  }
+  to{
+    left:0;
+  }
 }
