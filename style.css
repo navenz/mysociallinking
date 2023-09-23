@@ -53,8 +53,8 @@ body *{
 
 #container {
 
-  width: 360px; /*adicionando a largura do container em 360 pixels*/
- 
+  width: 100%; /*adicionando a largura do container em 360 pixels*/
+  max-width: 580px;
   margin: 56px auto 0px; /*centralizando o container no body, usando essa função margin*/
   padding:0 24px;
 
