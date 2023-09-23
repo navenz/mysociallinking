@@ -1,0 +1,201 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*ALTERNAR ENTRE OS MODOS DE CORES (DARK OU LIGHT) */
+
+:root { /*AQUI SE MANIPULA A CLASSE LIGHT CRIADA LÁ NO HTML, ONDE SE DECLARA VARIÁVEIS GLOBAIS PARA SEREM
+        USADAS PELO DECORRER DO CÓDIGO COM SUAS ESPECIFICAÇÕES JÁ PRÉ ESTABELECIDAS, FACILITANDO A TRANSIÇÃO
+        MODOS*/
+  --cortexto: white;
+  --fundo: url(./assets/bg-mobile.jpg);
+  --borda: rgba(255, 255, 255, 0.5);
+  --texturainicial: rgba(255, 255, 255, 0.05);
+  --texturafinal: rgba(0, 0, 0, 0.02);
+  --icone: rgba(255, 255, 255, 0.2);
+  --switch: url(./assets/moon-stars.svg);
+
+}
+
+.light{
+  --cortexto: black;
+  --fundo: url(./assets/bg-mobile-light.jpg);
+  --borda: rgba(0, 0, 0, 0.5);
+  --texturainicial: rgba(0, 0, 0, 0.05);
+  --texturafinal: rgba(0, 0, 0, 0.02);
+  --icone: rgba(0, 0, 0, 0.1);
+  --switch: url(./assets/sol.svg); 
+}
+
+
+
+body{
+/*
+  
+  background-image: url(./assets/bg-mobile.jpg); //OBS1: AQUI HÁ A EXPORTAÇÃO DA IMAGEM DE BACKGROUND
+  background-repeat: no-repeat; //OBS2: AQUI HÁ A FUNÇÃO DE NÃO REPETIR A IMAGEM DIVERSAS VEZES.
+  background-position: top center; //OBS3: AQUI REALOCA A IMAGEM PARA O TOPO E CENTRALIZADA.
+  background-size: cover; //OBS4: O COVER REALOCA A IMAGEM PARA QUE ELA PREENCHA TODO O BODY.
+
+*/
+
+    background: var(--fundo) no-repeat top center/cover;
+
+/* AQUI EM CIMA É REALIZADA UMA FORMA DE "RESUMIR" OS CÓDIGOS, CHAMADA DE "SHORT HAND"(ATALHO).*/
+}
+
+body *{
+  font-family: 'REM', sans-serif;
+  color:var(--cortexto);
+}
+
+#container {
+
+  width: 360px; /*adicionando a largura do container em 360 pixels*/
+ 
+  margin: 56px auto 0px; /*centralizando o container no body, usando essa função margin*/
+  padding:0 24px;
+
+}
+
+/*PERFIL*/
+#perfil{ 
+  text-align: center;
+  padding: 30px;
+
+}
+
+#perfil img{
+  width: 112px;
+
+  
+}
+
+#perfil p{
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 2px;
+}
+
+/*SWITCH*/
+
+#switch {
+
+  position: relative;
+  width:64px;
+
+  margin: 10px auto;
+}
+ 
+#switch button{
+  width: 32px;
+  height: 32px;
+  background: white var(--switch) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;     /*esse e o translatey se alinhanm*/
+  left:0;
+  z-index:1;
+  transform: translateY(-50%)
+
+  
+
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+
+
+}
+#switch span{
+  display: block;
+  width: 64px;
+  height: 24px;
+
+  background: var(--texturainicial);
+  border: 1px solid var(--borda);
+  backdrop-filter: blur (4px);
+  -webkit-backdrop-filter: blur (4px);
+  border-radius: 9999px;
+
+}
+
+
+/*/////////ESTILIZANDO OS BOTÕES//////////*/
+
+ul {
+  list-style: none; /*none tira os pontinhos*/
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+}
+ul li a {
+  display: flex; 
+  align-items: center;
+  justify-content: center; /*todos esses termos garantem a centralização total do texto dos botões*/
+
+  padding: 16px 24px; /*o preenchimento do container entre os textos e as bordas*/
+
+  background: var(--texturainicial); /*red green blue e alpha, onde o alpha define a transparência, e pelos 3 elementos terem o mesmo número, 
+  dá branco absoluto*/
+  border: 1px solid var(--borda); /*essas duas garantem a coloração esbranquiçada dos botões*/
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /*adiciona o blur dos botões*/
+
+  text-decoration: none; /*tira o sublinhado*/
+  font-weight: 500; 
+
+  transition: background 0.25s;  /*TRANSITANDO AS CONFIGURAÇÕES DE REAÇÃO REGIDO PELO TEMPO ESITMADO*/
+
+}
+
+/*/-------------REAÇÃO DO BOTÃO COM O MOUSE EM CIMA DELE OU TAMBÉM
+CHAMADO DE "PSEUDO-SELECTOR", SENDO O TERMO DA AÇÃO COM O CURSO SOBRE O
+ELEMENTO-----------------*/
+
+ul li a:hover {
+  background:var(--texturafinal); 
+  border: 1.5px solid var(--cortexto);
+
+}
+
+
+#sociallinks {
+  display: flex;
+  justify-content: center;
+  gap: 16px;        /* essas funções para centralizar e adicionar um espaçamento entre os ícones*/
+
+  padding: 24px 0;
+  font-size: 24px;  /*o padding para adicionar preenchimento do ícone para fora, e o font-size alterando o tamanho do ícone em si*/
+
+
+}
+#sociallinks a{    /*AQUI NOVAMENTE SE ADICIONA O MÉTODO RESPONSIVO COM O CURSOR, NO CASO AGORA COM OS ÍCONES*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.15s;
+  border-radius: 50%; /*ESSE BORDER-RADIUS 50% GARANTE UMA ESFERA PERFEITA AO REDOR DO ÍCONE*/
+    
+}
+
+#sociallinks a:hover{ /*NOVAMENTE O HOVER PARA ADICIONAR RESPOSTA E ESTILZIÇÃO DE BACKGROUND RESPONSIVO, COM O ENBRAQUECIMENTO*/
+  background:var(--icone); 
+
+}
+
+footer{
+  padding: 24px;
+  text-align: center;
+}
